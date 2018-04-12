@@ -1,9 +1,25 @@
+/*
+Interesting findings:
+	when rotating and translating the bots arm, the arm starting rotating around it's "shifted" center of gravity.
+	As it moved away from its point of origin, and its axes were being rotated simultaneously, the whole arm began
+	spiraling around a shifting/central point that was disconnected (not in the center) of the arm itself
+	as opposed to simply spinning like a wheel traveling along a vector.
+*/
+
 h1 {
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 }
 
+div.instructions {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
 .robots {
+}
+
+.android {
 }
 
 .head,
@@ -16,26 +32,123 @@ h1 {
 }
 
 .head {
+	display: flex;
 	width: 200px;
 	margin: 0 auto;
 	height: 150px;
 	border-radius: 200px 200px 0 0;
 	margin-bottom: 10px;
+	align-items: flex-end;
 }
 
-.eyes {
+@keyframes headbob {
+	3%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	5%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	8%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	10%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	13%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	15%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	18%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	20%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	23%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	25%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	28%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	30%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	33%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	35%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	38%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	40%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	43%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	45%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	48%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	50%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	53%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	55%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	58%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	60%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	63%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	65%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	68%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	70%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	73%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	75%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	78%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	80%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	83%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	85%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	88%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	90%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	93%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	95%	{transform: rotate(0deg); top: 0px; left: -15px;}
+	98%	{transform: rotate(-10deg); top: 10px; left: 15px;}
+	100%	{transform: rotate(0deg); top: 0px; left: -15px;}
+}
 
+@keyframes headbang {
+	3%	{transform: rotateX(60deg); top: 30px;}
+5%	{transform: rotateX(0deg); top: 0px;}
+8%	{transform: rotateX(60deg); top: 30px;}
+10%	{transform: rotateX(0deg); top: 0px;}
+13%	{transform: rotateX(60deg); top: 30px;}
+15%	{transform: rotateX(0deg); top: 0px;}
+18%	{transform: rotateX(60deg); top: 30px;}
+20%	{transform: rotateX(0deg); top: 0px;}
+23%	{transform: rotateX(60deg); top: 30px;}
+25%	{transform: rotateX(0deg); top: 0px;}
+28%	{transform: rotateX(60deg); top: 30px;}
+30%	{transform: rotateX(0deg); top: 0px;}
+33%	{transform: rotateX(60deg); top: 30px;}
+35%	{transform: rotateX(0deg); top: 0px;}
+38%	{transform: rotateX(60deg); top: 30px;}
+40%	{transform: rotateX(0deg); top: 0px;}
+43%	{transform: rotateX(60deg); top: 30px;}
+45%	{transform: rotateX(0deg); top: 0px;}
+48%	{transform: rotateX(60deg); top: 30px;}
+50%	{transform: rotateX(0deg); top: 0px;}
+53%	{transform: rotateX(60deg); top: 30px;}
+55%	{transform: rotateX(0deg); top: 0px;}
+58%	{transform: rotateX(60deg); top: 30px;}
+60%	{transform: rotateX(0deg); top: 0px;}
+63%	{transform: rotateX(60deg); top: 30px;}
+65%	{transform: rotateX(0deg); top: 0px;}
+68%	{transform: rotateX(60deg); top: 30px;}
+70%	{transform: rotateX(0deg); top: 0px;}
+73%	{transform: rotateX(60deg); top: 30px;}
+75%	{transform: rotateX(0deg); top: 0px;}
+78%	{transform: rotateX(60deg); top: 30px;}
+80%	{transform: rotateX(0deg); top: 0px;}
+83%	{transform: rotateX(60deg); top: 30px;}
+85%	{transform: rotateX(0deg); top: 0px;}
+88%	{transform: rotateX(60deg); top: 30px;}
+90%	{transform: rotateX(0deg); top: 0px;}
+93%	{transform: rotateX(60deg); top: 30px;}
+95%	{transform: rotateX(0deg); top: 0px;}
+98%	{transform: rotateX(60deg); top: 30px;}
+100%	{transform: rotateX(0deg); top: 0px;}
 }
 
 .head:hover {
-	width: 300px;
-    transition: 1s ease-in-out;
+	position: relative;
+	animation-name: headbob;
+	animation-duration: 9.25s;
+}
+
+.head:active {
+	position: relative;
+	animation-name: headbang;
+	animation-duration: 9.25s;
+}
+
+div.upper_body:active {
+	transform: scale(1.5) rotateY(1080deg);
+	transition: transform 2s;
 }
 
 .upper_body {
 	width: 300px;
 	height: 150px;
 	display: flex;
+	margin: auto;
 }
 
 .left_arm, .right_arm {
@@ -51,6 +164,13 @@ h1 {
 .right_arm {
 	margin-left: 10px;
 }
+.right_arm:hover {
+	position: relative;
+	top: -30px;
+	right: -30px;
+	transform: rotateZ(2000deg);
+	transition: all 2s linear;
+}
 
 .torso {
 	width: 200px;
@@ -58,11 +178,17 @@ h1 {
 	border-radius: 0 0 50px 50px;
 }
 
+
+.torso:active {
+	border-radius: 40%;
+}
+
 .lower_body {
 	width: 200px;
 	height: 200px;
 	/* This is another useful property. Hmm what do you think it does?*/
-	margin: 0 auto;
+	margin: auto;
+	display: flex;
 
 }
 
@@ -88,6 +214,13 @@ h1 {
 	margin-left: 30px;
 }
 
+.eyes {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	margin: 10%;
+}
+
 .left_eye, .right_eye {
 	width: 20px;
 	height: 20px;
@@ -95,9 +228,9 @@ h1 {
 	background-color: white;
 }
 
-.left_eye {
-	/* These properties are new and you haven't encountered
-	in this course. Check out CSS Tricks to see what it does! */
+/* .left_eye {
+	These properties are new and you haven't encountered
+	in this course. Check out CSS Tricks to see what it does!
 	position: relative;
 	top: 100px;
 	left: 40px;
@@ -107,7 +240,7 @@ h1 {
 	position: relative;
 	top: 100px;
 	left: 120px;
-}
+} */
 
 
 
